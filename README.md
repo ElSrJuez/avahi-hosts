@@ -125,7 +125,7 @@ This command runs the script in debug mode, outputs the hosts to `/etc/pihole/cu
 The default purge time is **2880 minutes** (2 days). To change this, edit the `avahi_hosts.db` file located in `/etc/avahi-hosts/data/` and modify the line starting with `# x=` to your desired purge time in minutes.  
    
 ```bash  
-sudo nano /etc/avahi-hosts/avahi_hosts.db  
+sudo nano /var/lib/avahi-hosts/avahi_hosts.db  
 ```  
    
 Change:  
@@ -152,9 +152,10 @@ To run the script automatically every 12 hours, you can use either **systemd tim
    
 #### Using systemd Timers  
    
-1. **Create a systemd Service File**  
+1. **Create systemd Service and Timer Files**  
   
    ```bash  
+   sudo cp systemd/avahi-hosts.* /etc/systemd/system/
    sudo nano /etc/systemd/system/avahi-hosts.service  
    ```  
   
