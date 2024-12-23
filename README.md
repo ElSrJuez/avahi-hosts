@@ -1,7 +1,7 @@
 **avahi-hosts**  
    
 A collection of Bash scripts to generate a static hosts file from the Avahi Browser. This solution is designed to integrate with Pi-hole for automating DNS resolution on your LAN, especially when you cannot rely on Pi-hole's integrated DHCP service. Pi-hole doesn't support Dynamic DNS Updates (RFC 2136), and this script bridges that gap by updating the `custom.list` file with local hostnames.  
-![avahi-hosts-logo](https://github.com/ElSrJuez/avahi-hosts/blob/main/res/avahi-hosts-logo.png)
+<img src="https://github.com/ElSrJuez/avahi-hosts/blob/main/res/avahi-hosts-logo.png" alt="avahi-hosts-logo" width="25%">
 
 ---  
    
