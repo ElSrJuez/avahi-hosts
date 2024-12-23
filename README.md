@@ -64,8 +64,8 @@ Pi-hole lacks support for Dynamic DNS Updates (RFC 2136), which can make hostnam
    Place the `avahi-hosts.sh` script into a directory in your `PATH`, such as `/usr/local/bin/`:  
   
    ```bash  
-   sudo cp avahi-hosts.sh /usr/local/bin/  
-   sudo chmod +x /usr/local/bin/avahi-hosts.sh  
+   sudo cp avahi-hosts.sh /usr/local/sbin/  
+   sudo chmod +x /usr/local/sbin/avahi-hosts.sh  
    ```  
    
 3. **Install Dependencies**  
@@ -79,17 +79,16 @@ Pi-hole lacks support for Dynamic DNS Updates (RFC 2136), which can make hostnam
    
 4. **Create Data Directory**  
   
-   The script uses `/etc/avahi-hosts/data` to store its database file. Create this directory:  
+   The script uses `/etc/avahi-hosts/data` to store its database file. It also creates this directory automatically, but if not:  
   
    ```bash  
-   sudo mkdir -p /etc/avahi-hosts/data  
+   sudo mkdir -p /etc/avahi-hosts 
    ```  
   
    Ensure it has the correct permissions:  
   
    ```bash  
    sudo chmod 755 /etc/avahi-hosts  
-   sudo chmod 755 /etc/avahi-hosts/data  
    ```  
    
 ---  
@@ -105,7 +104,7 @@ sudo avahi-hosts.sh -f /path/to/pihole/custom.list
 **Options**  
    
 - `-f output_hosts_file`: Specify the output hosts file path (default: `/path/to/pihole/custom.list`).  
-- `-s hostname_suffix`: Specify the hostname suffix for the local network (default: `.homenet`).  
+- `-s hostname_suffix`: Specify the hostname suffix for the local network (default: `.lan`).  
 - `-d`: Enable debug mode for detailed output.  
 - `-h`: Display help message.  
    
@@ -126,7 +125,7 @@ This command runs the script in debug mode, outputs the hosts to `/etc/pihole/cu
 The default purge time is **2880 minutes** (2 days). To change this, edit the `avahi_hosts.db` file located in `/etc/avahi-hosts/data/` and modify the line starting with `# x=` to your desired purge time in minutes.  
    
 ```bash  
-sudo nano /etc/avahi-hosts/data/avahi_hosts.db  
+sudo nano /etc/avahi-hosts/avahi_hosts.db  
 ```  
    
 Change:  
@@ -149,7 +148,7 @@ If your network uses a different domain suffix, use the `-s` option to specify i
    
 ### 7. Automating Execution  
    
-To run the script automatically every 12 hours, you can use either **systemd timers** or **cron**. Here, we'll explain how to use systemd timers.  
+To run the script automatically every 12 hours, you can use either **systemd timers**. Here, we'll explain how to use systemd timers.  
    
 #### Using systemd Timers  
    
@@ -163,7 +162,7 @@ To run the script automatically every 12 hours, you can use either **systemd tim
   
    ```  
    [Unit]  
-   Description=Update Avahi Hosts Script  
+   Description=Avahi Hosts Script for PiHole   
   
    [Service]  
    Type=oneshot  

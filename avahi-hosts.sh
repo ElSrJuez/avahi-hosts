@@ -1,10 +1,10 @@
 #!/bin/bash  
   
 # Default configuration  
-DATA_FOLDER="/etc/avahi-hosts/data"  
+DATA_FOLDER="/var/lib/avahi-hosts/"  
 DB_FILE="$DATA_FOLDER/avahi_hosts.db"  # Database file to store host entries with timestamps  
 OUTPUT_HOSTS_ABSOLUTE_PATH="/path/to/pihole/custom.list"  # Default output hosts file path
-HOSTNAME_SUFFIX=".homenet"  # Default hostname suffix for local network  
+HOSTNAME_SUFFIX=".lan"  # Default hostname suffix for local network  
   
 DEBUG=0  # Default debug mode disabled  
 PURGE_TIME_DEFAULT=2880  # Default purge time in minutes (e.g., 2 days)  

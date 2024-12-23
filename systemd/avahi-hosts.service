@@ -1,0 +1,6 @@
+   [Unit]  
+   Description=Update Avahi Hosts Script  
+  
+   [Service]  
+   Type=oneshot  
+   ExecStart=/usr/local/bin/avahi-hosts.sh -f /etc/pihole/custom.list  
